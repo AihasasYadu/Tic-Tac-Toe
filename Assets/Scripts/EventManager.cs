@@ -5,15 +5,15 @@ public class EventManager : MonoSingletonGeneric<EventManager>
 {
     public delegate void Executable();
     public static event Executable MoveMade;
-    public static Action<Turn> ChangeTurnEvent;
+    public static Action<Turn> ChangeTurnTo;
 
     public void MoveEvent()
     {
-        MoveMade?.Invoke();
+        MoveMade();
     }
 
-    public void ChangeTurn(Turn t)
+    public void ChangeTurnEvent(Turn t)
     {
-        ChangeTurnEvent?.Invoke(t);
+        ChangeTurnTo(t);
     }
 }

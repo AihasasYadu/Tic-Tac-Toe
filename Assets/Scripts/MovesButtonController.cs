@@ -8,13 +8,13 @@ public class MovesButtonController : MonoBehaviour
 {
     private Turn playerMove;
     public Turn GetMove { get { return playerMove; } }
-    private Turn currTurn;
-    [SerializeField] private TextMeshProUGUI buttonText;
+    private Turn currentTurn;
+    [SerializeField] private TextMeshProUGUI  buttonText;
     private Button moveButton;
 
     private void Awake()
     {
-        EventManager.ChangeTurnEvent += ChangeTurn;
+        EventManager.ChangeTurnTo += ChangeTurn;
     }
 
     private void Start()
@@ -26,16 +26,19 @@ public class MovesButtonController : MonoBehaviour
 
     private void MakeMove()
     {
-        buttonText.SetText(currTurn.ToString());
-        playerMove = currTurn;
-        Debug.Log("Player : " + playerMove.ToString());
+        buttonText.SetText(currentTurn.ToString());
+        playerMove = currentTurn;
         moveButton.onClick.RemoveListener(MakeMove);
         EventManager.Instance.MoveEvent();
-        EventManager.ChangeTurnEvent -= ChangeTurn;
     }
 
     private void ChangeTurn(Turn t)
     {
-        currTurn = t;
+        currentTurn = t;
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.ChangeTurnTo -= ChangeTurn;
     }
 }
