@@ -32,7 +32,6 @@ public class JSonManager : MonoSingletonGeneric<JSonManager>
     private void SaveData()
     {
         string dataToSave = JsonUtility.ToJson(highScoreList);
-        //File.WriteAllText(Application.persistentDataPath + "/HighScores.txt", dataToSave);
         File.WriteAllText("D:/Unity Projects (2020)/Tic-Tac-Toe/Assets/JSONs/HighScores.json", dataToSave);
     }
 }

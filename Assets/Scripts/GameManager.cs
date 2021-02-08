@@ -13,11 +13,13 @@ public class GameManager : MonoSingletonGeneric<GameManager>
     [SerializeField] private GridLayoutGroup layoutPanel;
     [SerializeField] private TextMeshProUGUI currentTurnIndicator;
     [SerializeField] private PlayerDataScriptableObjectScript playerData;
+    [SerializeField] private Image bgIMG;
     private Button[,] movesMap = new Button[3, 3];
     private Turn currTurn;
     private PlayerList saveData;
     private void Start()
     {
+        SetTheme();
         GridSetup();
         currTurn = Turn.X;
         currentTurnIndicator.SetText(currTurn.ToString());
@@ -25,6 +27,11 @@ public class GameManager : MonoSingletonGeneric<GameManager>
         UpdateScoreText();
         EventManager.Instance.ChangeTurnEvent(currTurn);
         EventManager.MoveMade += ChangeTurn;
+    }
+
+    private void SetTheme()
+    {
+        bgIMG.sprite = ThemeManager.Instance.GetBGImage;
     }
 
     private void UpdateScoreText()
@@ -67,7 +74,7 @@ public class GameManager : MonoSingletonGeneric<GameManager>
 
     private void ShiftSaveData(int n)
     {
-        for (int j = 2; j > n - 1; j--)
+        for (int j = 2; j > n; j--)
         {
             saveData.player[j] = saveData.player[j - 1];
         }
@@ -192,6 +199,7 @@ public class GameManager : MonoSingletonGeneric<GameManager>
         {
             Debug.Log("It's A Draw");
             CheckAndClearData();
+            DisableButtonsInteractable();
             StartCoroutine(ReloadScene());
             return true;
         }
@@ -201,6 +209,7 @@ public class GameManager : MonoSingletonGeneric<GameManager>
     {
         if (moveCounter == 3)
         {
+            DisableButtonsInteractable();
             if(currTurn.Equals(Turn.O))
             {
                 CheckAndClearData();
@@ -223,6 +232,17 @@ public class GameManager : MonoSingletonGeneric<GameManager>
         CheckPlayerData();
         playerData.data.name = "";
         playerData.data.score = 0;
+    }
+
+    private void DisableButtonsInteractable()
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            for(int j = 0; j < 3; j++)
+            {
+                movesMap[i, j].interactable = false;
+            }
+        }
     }
 
     private IEnumerator ReloadScene()
