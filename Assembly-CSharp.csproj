@@ -65,8 +65,11 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\EventManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\IntroUIController.cs" />
+    <Compile Include="Assets\Scripts\JSonManager.cs" />
     <Compile Include="Assets\Scripts\MonoSingletonGeneric.cs" />
     <Compile Include="Assets\Scripts\MovesButtonController.cs" />
+    <Compile Include="Assets\Scripts\PlayerDataScriptableObjectScript.cs" />
     <Compile Include="Assets\Scripts\TurnEnum.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
