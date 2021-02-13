@@ -9,7 +9,7 @@ public class MovesButtonController : MonoBehaviour
     private Turn playerMove;
     public Turn GetMove { get { return playerMove; } }
     private Turn currentTurn;
-    [SerializeField] private TextMeshProUGUI  buttonText;
+    [SerializeField] private TextMeshProUGUI buttonText;
     private Button moveButton;
 
     private void Awake()
@@ -19,9 +19,18 @@ public class MovesButtonController : MonoBehaviour
 
     private void Start()
     {
+        SetTheme();
         playerMove = Turn.None;
         moveButton = gameObject.GetComponent<Button>();
         moveButton.onClick.AddListener(MakeMove);
+    }
+
+    private void SetTheme()
+    {
+        Color c = buttonText.color;
+        c = ThemeManager.Instance.GetTextColor;
+        c.a = 1;
+        buttonText.color = c;
     }
 
     private void MakeMove()

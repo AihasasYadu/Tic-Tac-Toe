@@ -63,6 +63,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BackButtonController.cs" />
+    <Compile Include="Assets\Scripts\Constants.cs" />
+    <Compile Include="Assets\Scripts\DictionaryScript.cs" />
+    <Compile Include="Assets\Scripts\DictionaryScriptEditor.cs" />
     <Compile Include="Assets\Scripts\EventManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\IntroUIController.cs" />
@@ -70,7 +74,8 @@
     <Compile Include="Assets\Scripts\MonoSingletonGeneric.cs" />
     <Compile Include="Assets\Scripts\MovesButtonController.cs" />
     <Compile Include="Assets\Scripts\PlayerDataScriptableObjectScript.cs" />
-    <Compile Include="Assets\Scripts\TurnEnum.cs" />
+    <Compile Include="Assets\Scripts\ThemeManager.cs" />
+    <Compile Include="Assets\Scripts\UIDictScriptable.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
@@ -688,6 +693,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{DEF7CFBB-0629-6A59-225C-9B33461F46F9}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
       <Project>{5E11F43F-CFBC-BFC9-99A6-C1C6E6974AB7}</Project>
       <Name>UnityEngine.UI</Name>
