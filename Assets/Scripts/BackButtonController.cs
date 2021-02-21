@@ -19,5 +19,6 @@ public class BackButtonController : MonoBehaviour
             "y", y,
             "islocal", true,
             "easetype", iTween.EaseType.easeInOutSine));
+        CanvasManager.Instance.ChangeActiveCanvas = CanvasTypes.Main;
     }
 }

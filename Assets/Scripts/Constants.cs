@@ -11,3 +11,11 @@ public enum Themes
     Blue,
     Yellow
 }
+
+public enum CanvasTypes
+{
+    Main,
+    Theme,
+    UserData,
+    HighScores
+}
