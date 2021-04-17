@@ -11,7 +11,7 @@ public class CanvasManager : MonoSingletonGeneric<CanvasManager>
                                            ChangeCanvasTo(temp);
                                           } }
 
-    protected void Awake()
+    protected override void Awake()
     {
         base.Awake();
         for (int i = 0; i < canvasList.Count; i++)
@@ -27,14 +27,20 @@ public class CanvasManager : MonoSingletonGeneric<CanvasManager>
     {
         for (int i = 0; i < canvasList.Count; i++)
         {
-            if (canvasList[i].GetCanvasType != ct)
+            if (canvasList[i].GetCanvasType != ct && canvasList[i].enabled)
             {
-                canvasList[i].gameObject.SetActive(false);
+                StartCoroutine(DeactivateWithDelay(canvasList[i].gameObject));
             }
             else
             {
                 canvasList[i].gameObject.SetActive(true);
             }
         }
+    }
+
+    private IEnumerator DeactivateWithDelay(GameObject GO)
+    {
+        yield return new WaitForSeconds(1);
+        GO.SetActive(false);
     }
 }
