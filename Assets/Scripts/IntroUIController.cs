@@ -56,6 +56,7 @@ public class IntroUIController : MonoBehaviour
             "y", 0,
             "islocal", true,
             "easetype", iTween.EaseType.easeInOutSine));
+        CanvasManager.Instance.ChangeActiveCanvas = CanvasTypes.Theme;
     }
 
     private void MoveNamePanel()
@@ -64,6 +65,7 @@ public class IntroUIController : MonoBehaviour
             "y", 0, 
             "islocal", true,
             "easetype", iTween.EaseType.easeInOutSine));
+        CanvasManager.Instance.ChangeActiveCanvas = CanvasTypes.UserData;
     }
 
     private void DisplayHighScore()
@@ -78,6 +80,7 @@ public class IntroUIController : MonoBehaviour
             highScoreNames[i].SetText(saveData.player[i].name);
             highScorePoints[i].SetText(saveData.player[i].score.ToString());
         }
+        CanvasManager.Instance.ChangeActiveCanvas = CanvasTypes.HighScores;
     }
 
     private void ClearData()
